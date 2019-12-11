@@ -14,7 +14,7 @@ const buildControls = (props: any): JSX.Element => {
         <div className="BuildControls">
             {control.map(ctrl => {
                 return (
-                    <BuildControl key={ctrl.label} label={ctrl.type} />
+                    <BuildControl key={ctrl.label} label={ctrl.type} added={() => props.ingredientAdded(ctrl.type)} />
                 )
             })}
         </div >
