@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Aux from "../../hoc/Aux";
 import Burger from "../../components/Burger/Burger";
 import burgerState from '../../assets/interface/burgetState';
-import BuildControl from '../../components/Burger/BuildControls/buildControls';
+import BuildControls from '../../components/Burger/BuildControls/buildControls';
 
 interface Ingredient_Prices {
     [propName: string]: number,
@@ -23,7 +23,8 @@ export class burgerbuilder extends Component<{}, burgerState> {
                 cheese: 0,
                 meat: 0
             },
-            totalPrice: 4
+            totalPrice: 4,
+            purchaseable: false
         };
     }
 
@@ -39,6 +40,7 @@ export class burgerbuilder extends Component<{}, burgerState> {
         const oldPrice = this.state.totalPrice;
         const newPrice = oldPrice + priceAddtion;
         this.setState({ totalPrice: newPrice, ingredients: updatedIngredients })
+        this.updatePurchaseState(updatedIngredients);
     }
 
     removeIngredientHandler = (type: string) => {
@@ -55,16 +57,31 @@ export class burgerbuilder extends Component<{}, burgerState> {
         const oldPrice = this.state.totalPrice;
         const newPrice = oldPrice - priceAddtion;
         this.setState({ totalPrice: newPrice, ingredients: updatedIngredients })
+        this.updatePurchaseState(updatedIngredients)
+    }
+
+    updatePurchaseState(updatedIngredients: Ingredient_Prices) {
+        const sum = Object.keys(updatedIngredients)
+            .map((key) => {
+                return updatedIngredients[key];
+            })
+            .reduce((acc, next) => {
+                console.log(acc + next);
+                return acc + next;
+            }, 0);
+        this.setState({ purchaseable: sum > 0 });
     }
 
     render() {
         return (
             <Aux>
                 <Burger ingredients={this.state.ingredients} />
-                <BuildControl
+                <BuildControls
                     ingredientAdded={this.addIngredientHandler}
                     ingredientRemoved={this.removeIngredientHandler}
-                    price={this.state.totalPrice} />
+                    price={this.state.totalPrice}
+                    purchaseable={this.state.purchaseable} />
+
             </Aux>
         );
     }

@@ -6,7 +6,8 @@ interface burgerState {
         // cheese: number,
         // meat: number
     },
-    totalPrice: number
+    totalPrice: number,
+    purchaseable: boolean
 }
 
 export default burgerState;
