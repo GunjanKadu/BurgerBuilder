@@ -3,6 +3,8 @@ import Aux from "../../hoc/Aux";
 import Burger from "../../components/Burger/Burger";
 import burgerState from '../../assets/interface/burgetState';
 import BuildControls from '../../components/Burger/BuildControls/buildControls';
+import Modal from '../../components/UI/Modal/modal'
+import OrderSumamry from '../../components/Burger/OrderSummary/orderSummary';
 
 interface Ingredient_Prices {
     [propName: string]: number,
@@ -75,6 +77,9 @@ export class burgerbuilder extends Component<{}, burgerState> {
     render() {
         return (
             <Aux>
+                <Modal>
+                    <OrderSumamry ingredients={this.state.ingredients} />
+                </Modal>
                 <Burger ingredients={this.state.ingredients} />
                 <BuildControls
                     ingredientAdded={this.addIngredientHandler}
