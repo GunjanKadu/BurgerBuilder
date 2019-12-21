@@ -78,17 +78,17 @@ export class burgerbuilder extends Component<{}, burgerState> {
     purchaseHandler = () => {
         this.setState({ purchasing: true })
     }
+    purchaseCancelHandler = () => {
+        this.setState({ purchasing: false })
+
+    }
 
     render() {
         return (
             <Aux>
-                <Modal show={this.state.purchasing}>
+                <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
                     <OrderSumamry ingredients={this.state.ingredients} />
                 </Modal>
-                {/* {this.state.purchasing ?
-                    (<Modal>
-                        <OrderSumamry ingredients={this.state.ingredients} />
-                    </Modal>) : <div></div>} */}
                 <Burger ingredients={this.state.ingredients} />
                 <BuildControls
                     ingredientAdded={this.addIngredientHandler}
