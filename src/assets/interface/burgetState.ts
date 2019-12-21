@@ -8,6 +8,7 @@ interface burgerState {
     },
     totalPrice: number,
     purchaseable: boolean
+    purchasing: boolean
 }
 
 export default burgerState;
