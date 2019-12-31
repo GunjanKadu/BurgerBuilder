@@ -2,6 +2,7 @@ import React from 'react';
 import './modal.css'
 import Aux from '../../../hoc/Aux'
 import Backdrop from '../Backdrop/backdrop';
+
 interface modalProps {
 
 }
