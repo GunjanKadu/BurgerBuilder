@@ -69,7 +69,6 @@ export class burgerbuilder extends Component<{}, burgerState> {
                 return updatedIngredients[key];
             })
             .reduce((acc, next) => {
-                console.log(acc + next);
                 return acc + next;
             }, 0);
         this.setState({ purchaseable: sum > 0 });
