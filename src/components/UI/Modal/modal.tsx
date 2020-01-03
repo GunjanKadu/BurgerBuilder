@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './modal.css'
-import Aux from '../../../hoc/Aux'
+import Aux from '../../../hoc/Aux/Aux'
 import Backdrop from '../Backdrop/backdrop';
 
 interface modalProps {
