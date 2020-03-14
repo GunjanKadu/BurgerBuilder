@@ -1,5 +1,3 @@
-# Type the following command in the terminal to change the author
-
 #!/bin/sh
 
 git filter-branch --env-filter '
