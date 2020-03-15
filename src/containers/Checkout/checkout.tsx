@@ -10,6 +10,15 @@ export class checkout extends Component<RouteComponentProps> {
       bacon: 1
     }
   };
+  componentDidMount() {
+    const query: any = new URLSearchParams(this.props.location.search);
+    console.log(query);
+    const ingredients: any = {};
+    for (let param of query.entries()) {
+      ingredients[param[0]] = +param[1];
+    }
+    this.setState({ ingredients: ingredients });
+  }
   checkoutCancelledHandler = () => {
     this.props.history.goBack();
   };
