@@ -1,12 +1,13 @@
-import React, { Component } from "react";
-import Aux from "../../hoc/Aux/Aux";
-import Burger from "../../components/Burger/Burger";
-import burgerState from "../../assets/interface/burgetState";
-import BuildControls from "../../components/Burger/BuildControls/buildControls";
-import Modal from "../../components/UI/Modal/modal";
-import OrderSumamry from "../../components/Burger/OrderSummary/orderSummary";
-import axios from "../../axios-orders";
-import Spinner from "../../components/UI/Spinner/spinner";
+import React, { Component } from 'react';
+import Aux from '../../hoc/Aux/Aux';
+import Burger from '../../components/Burger/Burger';
+import burgerState from '../../assets/interface/burgetState';
+import BuildControls from '../../components/Burger/BuildControls/buildControls';
+import Modal from '../../components/UI/Modal/modal';
+import OrderSumamry from '../../components/Burger/OrderSummary/orderSummary';
+import axios from '../../axios-orders';
+import Spinner from '../../components/UI/Spinner/spinner';
+import { RouteComponentProps } from 'react-router-dom';
 
 interface Ingredient_Prices {
   [propName: string]: number;
@@ -17,7 +18,7 @@ const INGREDIENT_PRICES: Ingredient_Prices = {
   meat: 1.3,
   bacon: 0.7
 };
-export class burgerbuilder extends Component<{}, burgerState> {
+export class burgerbuilder extends Component<RouteComponentProps, burgerState> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -83,31 +84,32 @@ export class burgerbuilder extends Component<{}, burgerState> {
     this.setState({ purchasing: false });
   };
   purchaseContinueHandler = () => {
-    this.setState({ loading: true, purchasing: true });
-    const order = {
-      ingredients: this.state.ingredients,
-      price: this.state.totalPrice,
-      customer: {
-        name: "Gunjan Kadu",
-        address: {
-          street: "At TestStarßee",
-          city: "Heidelberg",
-          zip: "69207",
-          country: "Germany"
-        }
-      }
-    };
-    setTimeout(() => {
-      axios
-        .post("/orders.json", order)
-        .then(response => {
-          this.setState({ loading: false, purchasing: false });
-          console.log(response);
-        })
-        .catch(error => {
-          this.setState({ loading: false, purchasing: false });
-        });
-    }, 2000);
+    // this.setState({ loading: true, purchasing: true });
+    // const order = {
+    //   ingredients: this.state.ingredients,
+    //   price: this.state.totalPrice,
+    //   customer: {
+    //     name: "Gunjan Kadu",
+    //     address: {
+    //       street: "At TestStarßee",
+    //       city: "Heidelberg",
+    //       zip: "69207",
+    //       country: "Germany"
+    //     }
+    //   }
+    // };
+    // setTimeout(() => {
+    //   axios
+    //     .post("/orders.json", order)
+    //     .then(response => {
+    //       this.setState({ loading: false, purchasing: false });
+    //       console.log(response);
+    //     })
+    //     .catch(error => {
+    //       this.setState({ loading: false, purchasing: false });
+    //     });
+    // }, 2000);
+    this.props.history.push('/checkout');
   };
 
   render() {
