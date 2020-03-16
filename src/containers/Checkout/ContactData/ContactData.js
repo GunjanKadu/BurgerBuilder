@@ -7,11 +7,54 @@ import axios from '../../../axios-orders';
 import Input from '../../../components/UI/Input/input';
 class ContactData extends Component {
   state = {
-    name: '',
-    email: '',
-    address: {
-      street: '',
-      postalCode: ''
+    orderForm: {
+      name: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'Your Name'
+        },
+        value: ''
+      },
+      street: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'Your Street'
+        },
+        value: ''
+      },
+      zipCode: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'Your ZipCode'
+        },
+        value: ''
+      },
+      country: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'Your Country'
+        },
+        value: ''
+      },
+      email: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'Your Email'
+        },
+        value: ''
+      },
+      deliveryMethod: {
+        elementType: 'select',
+        elementConfig: {
+          options: [{ value: 'fastest', display: 'Fastest' }],
+          options: [{ value: 'cheapest', display: 'Cheapest' }]
+        }
+      }
     },
     loading: false
   };
@@ -23,7 +66,7 @@ class ContactData extends Component {
       ingredients: this.props.ingredients,
       price: this.props.price,
       customer: {
-        name: 'Max Schwarzmüller',
+        name: 'Gunjan Kadu',
         address: {
           street: 'Teststreet 1',
           zipCode: '41351',
@@ -47,13 +90,7 @@ class ContactData extends Component {
   render() {
     let form = (
       <form>
-        <Input
-          inputtype='input'
-          className={classes.Input}
-          type='text'
-          name='name'
-          placeholder='Your Name'
-        />
+        <Input elementType='...' elementConfig='...' value='...' />
         <Input
           inputtype='input'
           className={classes.Input}
