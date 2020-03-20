@@ -9,6 +9,7 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import { connect } from 'react-redux';
 import * as burgerBuilderActions from '../../store/actions/index';
+
 import axios from '../../axios-orders';
 
 class BurgerBuilder extends Component {
@@ -23,7 +24,7 @@ class BurgerBuilder extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props);
+    this.props.onInitIngredient();
   }
 
   updatePurchaseState(ingredients) {
@@ -106,13 +107,15 @@ const mapDispatchToProps = dispatch => {
     onIngredientAdded: ingName =>
       dispatch(burgerBuilderActions.addIngredients(ingName)),
     onIngredientRemoved: ingName =>
-      dispatch(burgerBuilderActions.removeIngredients(ingName))
+      dispatch(burgerBuilderActions.removeIngredients(ingName)),
+    onInitIngredient: () => dispatch(burgerBuilderActions.initIngredients())
   };
 };
 const mapStateToProps = state => {
   return {
     ings: state.ingredients,
-    price: state.totalPrice
+    price: state.totalPrice,
+    error: state.error
   };
 };
 export default connect(
