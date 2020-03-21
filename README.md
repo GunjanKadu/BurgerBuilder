@@ -4,7 +4,7 @@ An application built to order Delicious Burgers integrated with firebase
 
 ## DEMO
 
-## FIREBASE SETUP
+## FIREBASE RULES FOR QUERY AND AUTHENTICATION
 
             {
         "rules": {
