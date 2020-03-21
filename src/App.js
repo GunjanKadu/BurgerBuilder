@@ -32,7 +32,11 @@ class App extends Component {
         </Switch>
       );
     }
-    return <div>{routes}</div>;
+    return (
+      <div>
+        <Layout>{routes}</Layout>
+      </div>
+    );
   }
 }
 const mapStateToProps = state => {
