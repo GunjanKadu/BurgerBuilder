@@ -6,7 +6,7 @@ An application built to order Delicious Burgers integrated with firebase
 
 ## FIREBASE SETUP
 
-        {
+            {
         "rules": {
             "ingredients":{
                 ".read": "true",
@@ -14,7 +14,8 @@ An application built to order Delicious Burgers integrated with firebase
             },
             "orders":{
                 ".read": "auth!=null",
-                ".write":"auth!=null"
+                ".write":"auth!=null",
+                ".indexOn":["userId"]
             }
         }
         }
