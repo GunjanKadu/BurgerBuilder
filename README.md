@@ -4,6 +4,8 @@ An application built to order Delicious Burgers integrated with firebase
 
 ## DEMO
 
+https://burgerbuilder-752ae.firebaseapp.com
+
 ## FIREBASE RULES FOR QUERY AND AUTHENTICATION
 
             {
